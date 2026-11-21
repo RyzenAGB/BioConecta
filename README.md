@@ -1,5 +1,9 @@
 # 🐆 BioConecta
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://bioconecta.streamlit.app/)
+
+**Demo en vivo:** [https://bioconecta.streamlit.app/](https://bioconecta.streamlit.app/) · **Documentación formal:** [docs/DOCUMENTACION_FORMAL.md](docs/DOCUMENTACION_FORMAL.md) ([PDF](docs/DOCUMENTACION_FORMAL.pdf)) · **Pitch:** [docs/pitch_bioconecta.pdf](docs/pitch_bioconecta.pdf)
+
 Sistema geoespacial de **Modelado de Idoneidad de Hábitat (HSM)**, **Conectividad Ecológica** y **Monitoreo de Umbrales Críticos con Alertas Tempranas** para el jaguar (*Panthera onca*) en la zona piloto **UNICARIBE – Rancho Viejo – Zona Continental de Isla Mujeres** (Quintana Roo, México).
 
 ---

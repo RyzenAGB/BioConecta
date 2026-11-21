@@ -4,6 +4,7 @@
 
 - **Zona piloto:** UNICARIBE – Rancho Viejo – Zona Continental de Isla Mujeres, Quintana Roo, México
 - **Especie focal:** Jaguar (*Panthera onca*) — *En Peligro de Extinción* (NOM-059-SEMARNAT-2010)
+- **Aplicación web en vivo:** [bioconecta.streamlit.app](https://bioconecta.streamlit.app/)
 - **Repositorio oficial:** [github.com/RyzenAGB/BioConecta](https://github.com/RyzenAGB/BioConecta)
 - **Sistema de referencia espacial:** WGS 84 / UTM Zona 16N (`EPSG:32616`), resolución `30 × 30 m`
 

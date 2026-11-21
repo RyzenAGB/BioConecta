@@ -541,33 +541,43 @@
     </section>
 
     <!-- SLIDE 7: DEMO EN VIVO -->
-    <section class="slide" data-time="2:55 – 4:15" data-notes="Cambia a la pestaña de la app en vivo (http://localhost:8502) durante ~1 min 15 seg. Sigue los 4 clics exactos: 1) Vista 1: muestra mapa limpio + los 8 marcadores y abre Ajustes avanzados para mover un slider. 2) Vista 2: haz zoom al paso de Rancho Viejo. 3) Vista 3: cambia el radio a 'Solo pérdida NDVI 2024→2026' y haz clic en P03 o P10 para abrir su ficha explicable. 4) Pestaña 4: enseña rápido la validación.">
+    <section class="slide" data-time="2:55 – 4:15" data-notes="Cambia a la pestaña de la app en vivo (https://bioconecta.streamlit.app/) durante ~1 min 15 seg. Sigue los 4 clics exactos: 1) Vista 1: muestra mapa limpio + los 8 marcadores y abre Ajustes avanzados para mover un slider. 2) Vista 2: haz zoom al paso de Rancho Viejo. 3) Vista 3: cambia el radio a 'Solo pérdida NDVI 2024→2026' y haz clic en P03 o P10 para abrir su ficha explicable. 4) Pestaña 4: enseña rápido la validación.">
       <div class="tag">06 · Demostración en Vivo</div>
-      <h2>Veamos <span class="highlight">BioConecta</span> funcionando</h2>
-      <p class="subtitle">Aplicación web interactiva (Streamlit + Folium) corriendo en tiempo real con capas precalculadas y recálculo en vivo de idoneidad.</p>
-      <div class="grid-4" style="margin-top: 24px;">
-        <div class="card">
-          <div class="step-num">1</div>
-          <h3>Vista 1 · HSM</h3>
-          <p>Mapa limpio sin ruido urbano/hotelero, <strong>8 registros reales</strong> y <strong>5 sliders en vivo</strong> en Ajustes avanzados.</p>
+      <h2>Veamos <span class="highlight">BioConecta</span> funcionando en la nube</h2>
+      <div class="grid-2" style="grid-template-columns: 1.65fr 0.75fr; align-items: center; margin-top: 8px;">
+        <div>
+          <p class="subtitle" style="margin-bottom: 18px;">Aplicación web interactiva desplegada en la nube (Streamlit + Folium) con capas precalculadas y recálculo en vivo de idoneidad.</p>
+          <div class="grid-2" style="gap: 14px;">
+            <div class="card" style="padding: 16px 18px;">
+              <div class="step-num">1</div>
+              <h3>Vista 1 · HSM</h3>
+              <p>Mapa limpio sin ruido urbano/hotelero, <strong>8 registros reales</strong> y <strong>5 sliders en vivo</strong> en Ajustes avanzados.</p>
+            </div>
+            <div class="card" style="padding: 16px 18px;">
+              <div class="step-num">2</div>
+              <h3>Vista 2 · Rutas</h3>
+              <p>Parches núcleo, franja <em>Linkage Mapper</em> y el paso crítico en <strong>Rancho Viejo</strong>.</p>
+            </div>
+            <div class="card" style="padding: 16px 18px;">
+              <div class="step-num">3</div>
+              <h3>Vista 3 · Alertas</h3>
+              <p>Clic sobre <strong>P03 / P10</strong> para abrir su ficha explicable y curva <strong>2024→2025→2026</strong>.</p>
+            </div>
+            <div class="card" style="padding: 16px 18px;">
+              <div class="step-num">4</div>
+              <h3>Validación</h3>
+              <p>Contraste con presencias reales de jaguar (GBIF + iNaturalist) y tabla descargable.</p>
+            </div>
+          </div>
+          <a class="cta-btn" href="https://bioconecta.streamlit.app/" target="_blank">🚀 Abrir App: bioconecta.streamlit.app</a>
         </div>
-        <div class="card">
-          <div class="step-num">2</div>
-          <h3>Vista 2 · Rutas</h3>
-          <p>Parches núcleo, franja <em>Linkage Mapper</em> y el paso crítico en <strong>Rancho Viejo</strong>.</p>
-        </div>
-        <div class="card">
-          <div class="step-num">3</div>
-          <h3>Vista 3 · Alertas</h3>
-          <p>Clic sobre <strong>P03 / P10</strong> para abrir su ficha explicable y curva <strong>2024→2025→2026</strong>.</p>
-        </div>
-        <div class="card">
-          <div class="step-num">4</div>
-          <h3>Validación</h3>
-          <p>Contraste con presencias reales de jaguar (GBIF + iNaturalist) y tabla descargable.</p>
+        <div class="card" style="align-items: center; text-align: center; padding: 24px 20px;">
+          <div class="kpi-label" style="color: var(--accent);">Escanea para abrir en vivo</div>
+          <img src="qr_bioconecta.png" alt="QR BioConecta App" style="width: 210px; height: 210px; border-radius: 12px; margin: 10px 0; border: 4px solid #ffffff;" />
+          <div style="font-size: 14px; font-weight: 700; color: var(--text);">bioconecta.streamlit.app</div>
+          <div style="font-size: 12px; color: var(--muted);">Acceso público 24/7 sin instalar nada</div>
         </div>
       </div>
-      <a class="cta-btn" href="http://localhost:8502" target="_blank">🚀 Abrir App BioConecta (localhost:8502)</a>
     </section>
 
     <!-- SLIDE 8: VALIDACIÓN Y CIERRE -->
@@ -592,8 +602,9 @@
               <li>Automatizar alertas satelitales trimestrales para planeación municipal e IBANQROO.</li>
             </ul>
           </div>
-          <div style="font-size: 15px; color: var(--accent); font-weight: 700;">
-            🔗 Código abierto: github.com/RyzenAGB/BioConecta
+          <div style="font-size: 14.5px; color: var(--accent); font-weight: 700; line-height: 1.6;">
+            🌐 App en vivo: <a href="https://bioconecta.streamlit.app/" target="_blank" style="color: var(--accent); text-decoration: underline;">bioconecta.streamlit.app</a><br/>
+            🔗 Código abierto: <a href="https://github.com/RyzenAGB/BioConecta" target="_blank" style="color: var(--text); text-decoration: underline;">github.com/RyzenAGB/BioConecta</a>
           </div>
         </div>
       </div>

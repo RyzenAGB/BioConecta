@@ -2,7 +2,7 @@
 
 > **Cómo presentar:**
 > 1. Abre en tu navegador [pitch_bioconecta.html](pitch_bioconecta.html) (pulsa **`F`** para pantalla completa, **`← / →`** para avanzar y **`N`** si quieres ver las notas rápidas en pantalla).
-> 2. Ten abierta en otra pestaña la app en vivo en **`http://localhost:8502`** (o da clic al botón verde de la Slide 7).
+> 2. Ten abierta en otra pestaña la app en vivo en **`https://bioconecta.streamlit.app/`** (o da clic al botón verde / escanea el QR de la Slide 7).
 
 ---
 
@@ -45,7 +45,7 @@
 ---
 
 ## Slide 7 — Demo en Vivo de la App (`2:55 – 4:15`, 1 min 20 s)
-*(Haz clic en el botón verde o cambia a la pestaña de **`http://localhost:8502`**)*
+*(Haz clic en el botón verde o abre **`https://bioconecta.streamlit.app/`**; los jueces también pueden escanear el QR)*
 
 1. **Pestaña 1 — Idoneidad (`20 s`):**
    - Señala el mapa a ancho completo (ciudad y zona hotelera limpias sin ruido).
