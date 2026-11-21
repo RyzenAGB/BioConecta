@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BioConecta — Pitch (3–5 min)</title>
+  <style>
+    :root {
+      --bg: #07130e;
+      --bg-card: #0e2219;
+      --bg-card-2: #132c21;
+      --accent: #34d399;
+      --accent-soft: rgba(52, 211, 153, 0.14);
+      --amber: #fbbf24;
+      --red: #f87171;
+      --text: #ecfdf5;
+      --muted: #94b4a5;
+      --border: rgba(52, 211, 153, 0.22);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: radial-gradient(circle at 18% 18%, #0f2c1f 0%, var(--bg) 60%);
+      color: var(--text);
+      height: 100vh;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .deck {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 46px 68px 66px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(28px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 999px;
+      width: fit-content;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 5.2vw, 72px);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height: 1.12;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 22px;
+    }
+
+    h3 {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .subtitle {
+      font-size: clamp(18px, 1.8vw, 24px);
+      color: var(--muted);
+      line-height: 1.45;
+      max-width: 900px;
+    }
+
+    .highlight { color: var(--accent); }
+    .warn { color: var(--amber); }
+    .danger { color: var(--red); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .grid-5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-card-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card.red { border-color: rgba(248, 113, 113, 0.4); background: linear-gradient(160deg, #211013 0%, #170c0f 100%); }
+    .card.amber { border-color: rgba(251, 191, 36, 0.4); background: linear-gradient(160deg, #211b0d 0%, #161209 100%); }
+
+    .card p, li {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #d1e7dc;
+    }
+
+    .big-num {
+      font-size: clamp(32px, 3.4vw, 48px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .kpi-label {
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .img-frame {
+      background: #0a1712;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .img-frame img {
+      max-width: 100%;
+      max-height: 48vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .img-caption {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    .step-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #03150e;
+      font-weight: 800;
+      font-size: 20px;
+      padding: 16px 32px;
+      border-radius: 14px;
+      text-decoration: none;
+      width: fit-content;
+      box-shadow: 0 12px 32px rgba(16, 185, 129, 0.3);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(16, 185, 129, 0.45);
+    }
+
+    .quote-box {
+      border-left: 4px solid var(--accent);
+      background: rgba(52, 211, 153, 0.08);
+      padding: 16px 22px;
+      border-radius: 0 12px 12px 0;
+      font-size: 18px;
+      line-height: 1.45;
+      color: var(--text);
+      margin-top: 18px;
+    }
+
+    ul.clean {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    ul.clean li::before {
+      content: "▸ ";
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    /* Footer & Controls */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      padding: 0 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(7, 19, 14, 0.85);
+      border-top: 1px solid rgba(52, 211, 153, 0.14);
+      backdrop-filter: blur(8px);
+      font-size: 13px;
+      color: var(--muted);
+      z-index: 20;
+    }
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #10b981, #34d399);
+      transition: width 0.3s ease;
+      z-index: 30;
+    }
+
+    .nav-btns {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .nav-btn:hover { background: var(--bg-card-2); }
+
+    /* Speaker notes overlay (toggle with N) */
+    .notes-panel {
+      position: fixed;
+      bottom: 58px;
+      right: 28px;
+      width: 460px;
+      max-height: 36vh;
+      overflow-y: auto;
+      background: rgba(9, 23, 17, 0.96);
+      border: 1px solid var(--accent);
+      border-radius: 14px;
+      padding: 16px 18px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #d1fae5;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+      display: none;
+      z-index: 40;
+    }
+
+    .notes-panel.open { display: block; }
+    .notes-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    @media print {
+      @page {
+        size: 13.333in 7.5in;
+        margin: 0;
+      }
+      html, body {
+        width: 13.333in;
+        height: auto;
+        overflow: visible !important;
+        background: #07130e !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .deck {
+        width: 13.333in;
+        height: auto;
+      }
+      .slide {
+        position: relative !important;
+        inset: auto !important;
+        width: 13.333in !important;
+        height: 7.5in !important;
+        padding: 44px 64px !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: none !important;
+        background: radial-gradient(circle at 18% 18%, #0f2c1f 0%, #07130e 60%) !important;
+        page-break-after: always;
+        break-after: page;
+        overflow: hidden;
+      }
+      .slide:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+      .img-frame img {
+        max-height: 4.15in !important;
+      }
+      .footer, .progress, .notes-panel {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <div class="deck" id="deck">
+
+    <!-- SLIDE 1: PORTADA -->
+    <section class="slide active" data-time="0:00 – 0:20" data-notes="Saluda con seguridad. Di en una sola frase qué es BioConecta: un sistema geoespacial que detecta dónde puede vivir el jaguar hoy, por dónde necesita cruzar y qué fragmentos de selva están en riesgo crítico ahora mismo en el norte de Cancún e Isla Mujeres.">
+      <div class="tag">🐆 Pitch BioConecta · Quintana Roo</div>
+      <h1><span class="highlight">BioConecta</span></h1>
+      <p class="subtitle">
+        Inteligencia geoespacial para modelar el hábitat, proteger corredores biológicos y emitir
+        <strong>alertas tempranas de fragmentación</strong> para el jaguar (<em>Panthera onca</em>).
+      </p>
+      <div class="pill-row">
+        <div class="pill">📍 Zona piloto: UNICARIBE – Rancho Viejo – Isla Mujeres</div>
+        <div class="pill">🛰️ Sentinel-2 (2024–2026) · ESA · OSM · GBIF</div>
+        <div class="pill">⚡ App Web Interactiva (Streamlit + Folium)</div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: EL PROBLEMA -->
+    <section class="slide" data-time="0:20 – 0:55" data-notes="Arranca con el hecho real que todo el mundo en Cancún reconoce: los videos virales de jaguares en 2024 en Villas del Mar, Alôja y Arco Norte, y la cría atropellada en Arco Norte en 2022. Enfatiza que el jaguar no invade la ciudad: la ciudad fragmentó su selva y hoy no existe un tablero preventivo que diga qué parches están perdiendo cobertura hoy.">
+      <div class="tag">01 · El Problema</div>
+      <h2>El jaguar no está invadiendo la ciudad.<br><span class="danger">La expansión urbana está rompiendo su selva.</span></h2>
+      <div class="grid-3" style="margin-top: 8px;">
+        <div class="card red">
+          <div class="kpi-label danger">Evidencia vial real</div>
+          <div class="big-num danger">2022</div>
+          <h3>Atropellamiento en Av. Arco Norte</h3>
+          <p>Cría de jaguar atropellada a la altura de la UPQROO. Las vías periféricas actúan como barreras mortales.</p>
+        </div>
+        <div class="card amber">
+          <div class="kpi-label warn">Conflicto reciente</div>
+          <div class="big-num warn">2024</div>
+          <h3>Incursiones en zonas urbanas</h3>
+          <p>Reportes documentados en <strong>Villas del Mar (SM 248)</strong>, <strong>Fracc. Alôja</strong> y bordes de <strong>Arco Norte</strong> (911 / PROFEPA).</p>
+        </div>
+        <div class="card">
+          <div class="kpi-label">Brecha tecnológica</div>
+          <div class="big-num highlight">Ciego</div>
+          <h3>Sin monitoreo temprano</h3>
+          <p>Los mapas oficiales tardan años en actualizarse y requieren software GIS costoso; las decisiones se toman tarde.</p>
+        </div>
+      </div>
+      <div class="quote-box">
+        En la frontera <strong>UNICARIBE – Ciudad Mujeres – Rancho Viejo</strong>, la selva se está partiendo en islas cada vez más pequeñas sin una alerta clara de dónde intervenir primero.
+      </div>
+    </section>
+
+    <!-- SLIDE 3: JUSTIFICACIÓN -->
+    <section class="slide" data-time="0:55 – 1:25" data-notes="Explica por qué elegimos el jaguar y por qué esta zona: 1) Especie paraguas en Peligro de Extinción (NOM-059) con home range de 3,600 ha: proteger al jaguar protege a todo el ecosistema. 2) Es el corredor exacto junto a UNICARIBE y el ANP Chacmuchuch. 3) 100% datos abiertos y reglas transparentes, costo cero de licencias.">
+      <div class="tag">02 · Justificación</div>
+      <h2>¿Por qué el <span class="highlight">jaguar</span> y por qué <span class="highlight">aquí</span>?</h2>
+      <div class="grid-2" style="margin-top: 8px;">
+        <div class="card">
+          <h3>🐆 Especie paraguas en Peligro de Extinción</h3>
+          <p style="margin-bottom: 10px;">Protegida por la <strong>NOM-059-SEMARNAT-2010</strong>. Un solo individuo requiere un área mínima vital (<em>home range</em>) de referencia de:</p>
+          <div class="big-num highlight">3,600 ha <span style="font-size: 18px; color: var(--muted); font-weight: 600;">(36 km² · Calakmul, Chávez &amp; Ceballos)</span></div>
+          <p style="margin-top: 8px;">Si garantizamos conectividad para el jaguar, protegemos simultáneamente a decenas de especies, el manglar y la recarga del acuífero.</p>
+        </div>
+        <div class="card">
+          <h3>🌎 Laboratorio vivo y tecnología replicable</h3>
+          <ul class="clean" style="margin-top: 6px;">
+            <li><strong>48,461 ha</strong> justo en el punto de fricción entre Cancún Norte (<strong>UNICARIBE</strong>), <strong>Rancho Viejo</strong> y el ANP <strong>Sistema Lagunar Chacmuchuch</strong>.</li>
+            <li><strong>100% datos satelitales y cartográficos abiertos:</strong> Sentinel-2, ESA WorldCover, OpenStreetMap, GBIF e iNaturalist (<strong>$0 en licencias</strong>).</li>
+            <li><strong>Reglas explicables:</strong> cada alerta indica exactamente hectáreas perdidas y motivo, lista para planeación urbana y gestión ambiental.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: LA SOLUCIÓN Y METODOLOGÍA -->
+    <section class="slide" data-time="1:25 – 1:55" data-notes="Presenta BioConecta en 30 segundos: una metodología híbrida de 5 fases (inspirada en CRISP-DM y ecología del paisaje) que procesa las capas en UTM 16N a 30×30 m y entrega 3 vistas operativas más validación en una app web ligera.">
+      <div class="tag">03 · La Solución</div>
+      <h2>BioConecta: de satélites abiertos a <span class="highlight">alertas accionables</span></h2>
+      <p class="subtitle" style="margin-bottom: 24px;">
+        Metodología híbrida de 5 fases (CRISP-DM + análisis geoespacial en UTM 16N a 30×30 m) con cálculo offline en Python y tablero web fluido.
+      </p>
+      <div class="grid-5">
+        <div class="card">
+          <div class="step-num">1</div>
+          <h3>Reglas ecológicas</h3>
+          <p>Parámetros biológicos del jaguar, puntajes de cobertura, tolerancia vial y <em>home range</em>.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">2</div>
+          <h3>Datos alineados</h3>
+          <p>ESA WorldCover, Sentinel-2 NDVI (2024–2026), red vial/resorts/agua OSM y GBIF.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">3</div>
+          <h3>Hábitat y Rutas</h3>
+          <p>Mapa HSM ponderado (5 variables) + parches núcleo y corredores de menor costo.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">4</div>
+          <h3>Motor de Alertas</h3>
+          <p>Mide pérdida NDVI (2024→2026) y tamaño vs. <em>home range</em> con semáforo explicable.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">5</div>
+          <h3>Validación y App</h3>
+          <p>Contraste con presencias reales + app interactiva con sliders en vivo sin QGIS.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: QUÉ HACE — VISTAS 1 Y 2 -->
+    <section class="slide" data-time="1:55 – 2:25" data-notes="Muestra rápido las dos primeras salidas reales. Izquierda (Vista 1): 24,007 ha de hábitat núcleo y cómo nuestro filtro eliminó 2,549 ha de ruido (terrenos baldíos urbanos y zona hotelera de Costa Mujeres). Derecha (Vista 2): 19 parches núcleo y 28 corredores que exponen el cuello de botella crítico de Rancho Viejo.">
+      <div class="tag">04 · Qué Hace BioConecta (Vistas 1 y 2)</div>
+      <h2>Dónde puede vivir el jaguar y <span class="highlight">por dónde debe cruzar</span></h2>
+      <div class="grid-2">
+        <div class="img-frame">
+          <img src="../outputs/preview_vista1.png" alt="Vista 1 Idoneidad HSM" />
+          <div class="img-caption">
+            <strong>Vista 1 (HSM):</strong> 24,007 ha de hábitat núcleo (H ≥ 0.70). Filtro ecológico elimina 2,549 ha de baldíos urbanos y zona hotelera.
+          </div>
+        </div>
+        <div class="img-frame">
+          <img src="../outputs/preview_vista2.png" alt="Vista 2 Conectividad Ecológica" />
+          <div class="img-caption">
+            <strong>Vista 2 (Conectividad):</strong> 19 parches núcleo + 28 corredores (Dijkstra + Linkage Mapper). Cuello de botella crítico en Rancho Viejo.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: QUÉ HACE — VISTA 3 ALERTAS -->
+    <section class="slide" data-time="2:25 – 2:55" data-notes="Este es el golpe de efecto del producto: con imágenes reales de Sentinel-2 de marzo–mayo 2024 vs 2026 detectamos 5 parches perdiendo vegetación activamente justo en la frontera Rancho Viejo – Ciudad Mujeres (P10 pierde 14.8%, P03 pierde 13.4% / 31.6 ha, P12 pierde 11.7%). Además 18 de 19 fragmentos ya son menores al 50% del home range.">
+      <div class="tag">05 · Monitor de Umbrales y Alertas (Vista 3)</div>
+      <h2>Alertas tempranas con evidencia satelital <span class="danger">2024 → 2026</span></h2>
+      <div class="grid-2" style="grid-template-columns: 1.45fr 1fr;">
+        <div class="img-frame">
+          <img src="../outputs/preview_vista3.png" alt="Vista 3 Umbrales y Alertas" style="max-height: 54vh;" />
+          <div class="img-caption">Evaluación en parche + anillo de 90 m con compuestos de mediana Sentinel-2 (temporada seca).</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px; justify-content: center;">
+          <div class="card red">
+            <div class="kpi-label danger">Deforestación activa (2024→2026)</div>
+            <div class="big-num danger">3 Alto · 2 Moderado</div>
+            <p><strong>P10 (+14.8%)</strong>, <strong>P03 (+13.4%, -31.6 ha)</strong> y <strong>P12 (+11.7%)</strong> en alerta Alta; <strong>P14 (+8.2%)</strong> y <strong>P04 (+5.2%)</strong> en Moderada. Todos en Rancho Viejo – Ciudad Mujeres.</p>
+          </div>
+          <div class="card amber">
+            <div class="kpi-label warn">Umbral de Home Range (3,600 ha)</div>
+            <div class="big-num warn">18 / 19 parches</div>
+            <p>Quedan por debajo del <strong>50% del home range</strong> (&lt; 1,800 ha). Su supervivencia depende de mantener conectados los corredores hacia <strong>P01</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: DEMO EN VIVO -->
+    <section class="slide" data-time="2:55 – 4:15" data-notes="Cambia a la pestaña de la app en vivo (http://localhost:8502) durante ~1 min 15 seg. Sigue los 4 clics exactos: 1) Vista 1: muestra mapa limpio + los 8 marcadores y abre Ajustes avanzados para mover un slider. 2) Vista 2: haz zoom al paso de Rancho Viejo. 3) Vista 3: cambia el radio a 'Solo pérdida NDVI 2024→2026' y haz clic en P03 o P10 para abrir su ficha explicable. 4) Pestaña 4: enseña rápido la validación.">
+      <div class="tag">06 · Demostración en Vivo</div>
+      <h2>Veamos <span class="highlight">BioConecta</span> funcionando</h2>
+      <p class="subtitle">Aplicación web interactiva (Streamlit + Folium) corriendo en tiempo real con capas precalculadas y recálculo en vivo de idoneidad.</p>
+      <div class="grid-4" style="margin-top: 24px;">
+        <div class="card">
+          <div class="step-num">1</div>
+          <h3>Vista 1 · HSM</h3>
+          <p>Mapa limpio sin ruido urbano/hotelero, <strong>8 registros reales</strong> y <strong>5 sliders en vivo</strong> en Ajustes avanzados.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">2</div>
+          <h3>Vista 2 · Rutas</h3>
+          <p>Parches núcleo, franja <em>Linkage Mapper</em> y el paso crítico en <strong>Rancho Viejo</strong>.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">3</div>
+          <h3>Vista 3 · Alertas</h3>
+          <p>Clic sobre <strong>P03 / P10</strong> para abrir su ficha explicable y curva <strong>2024→2025→2026</strong>.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">4</div>
+          <h3>Validación</h3>
+          <p>Contraste con presencias reales de jaguar (GBIF + iNaturalist) y tabla descargable.</p>
+        </div>
+      </div>
+      <a class="cta-btn" href="http://localhost:8502" target="_blank">🚀 Abrir App BioConecta (localhost:8502)</a>
+    </section>
+
+    <!-- SLIDE 8: VALIDACIÓN Y CIERRE -->
+    <section class="slide" data-time="4:15 – 4:45" data-notes="Cierra con rigor científico y visión a futuro: 86.4% de los registros reales de jaguar caen en nuestro hábitat núcleo (mediana H = 0.90) y los conflictos de Arco Norte coinciden exactamente con el borde fragmentado. Explica que la arquitectura modular permite escalar a mono araña, coatí y alertas satelitales trimestrales. Cierra con una frase fuerte y agradece.">
+      <div class="tag">07 · Validación y Futuro</div>
+      <h2>Validado con evidencia real y listo para <span class="highlight">escalar</span></h2>
+      <div class="grid-2" style="grid-template-columns: 1.25fr 1fr;">
+        <div class="img-frame">
+          <img src="../outputs/preview_validacion.png" alt="Validación científica" style="max-height: 48vh;" />
+          <div class="img-caption">Validación regional (n = 22 presencias únicas GBIF + iNaturalist, norte de Q. Roo).</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px; justify-content: center;">
+          <div class="card">
+            <div class="kpi-label">Acierto en hábitat núcleo (H ≥ 0.70)</div>
+            <div class="big-num highlight">86.4% <span style="font-size: 16px; color: var(--muted);">mediana H = 0.90</span></div>
+            <p>19 de 22 registros reales caen en el núcleo predicho (distancia mediana = <strong>0 m</strong>). En zona piloto: H = 0.85 y 0.91.</p>
+          </div>
+          <div class="card">
+            <h3>Próximos pasos</h3>
+            <ul class="clean">
+              <li>Escalar a <strong>mono araña y coatí</strong> (arquitectura modular en <code>species_rules.py</code>).</li>
+              <li>Automatizar alertas satelitales trimestrales para planeación municipal e IBANQROO.</li>
+            </ul>
+          </div>
+          <div style="font-size: 15px; color: var(--accent); font-weight: 700;">
+            🔗 Código abierto: github.com/RyzenAGB/BioConecta
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Speaker Notes Drawer -->
+  <div class="notes-panel" id="notesPanel">
+    <div class="notes-title" id="notesTitle">Notas del presentador</div>
+    <div id="notesBody"></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div><strong>BioConecta</strong> · Pitch 3–5 min · <span id="timeHint">0:00 – 0:20</span></div>
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="toggleNotes()">Notas (N)</button>
+      <button class="nav-btn" onclick="toggleFullscreen()">Pantalla completa (F)</button>
+      <button class="nav-btn" onclick="go(-1)">← Anterior</button>
+      <span id="counter" style="min-width: 52px; text-align: center; font-weight: 700; color: var(--text);">1 / 8</span>
+      <button class="nav-btn" onclick="go(1)">Siguiente →</button>
+    </div>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let idx = 0;
+
+    function render() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+      document.getElementById('counter').textContent = `${idx + 1} / ${slides.length}`;
+      document.getElementById('progress').style.width = `${((idx + 1) / slides.length) * 100}%`;
+      const cur = slides[idx];
+      document.getElementById('timeHint').textContent = cur.dataset.time || '';
+      document.getElementById('notesTitle').textContent = `Guía Slide ${idx + 1} (${cur.dataset.time || ''})`;
+      document.getElementById('notesBody').textContent = cur.dataset.notes || '';
+    }
+
+    function go(delta) {
+      idx = Math.max(0, Math.min(slides.length - 1, idx + delta));
+      render();
+    }
+
+    function toggleNotes() {
+      document.getElementById('notesPanel').classList.toggle('open');
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(1); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(-1); }
+      else if (e.key.toLowerCase() === 'n') { toggleNotes(); }
+      else if (e.key.toLowerCase() === 'f') { toggleFullscreen(); }
+    });
+
+    render();
+  </script>
+</body>
+</html>
