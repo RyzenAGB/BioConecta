@@ -1,0 +1,13 @@
+geopandas>=1.0.0
+rasterio>=1.4.0
+shapely>=2.0.0
+pyproj>=3.7.0
+numpy>=2.0.0
+scipy>=1.14.0
+scikit-image>=0.24.0
+requests>=2.32.0
+matplotlib>=3.9.0
+folium>=0.18.0
+pystac-client>=0.8.0
+streamlit>=1.40.0
+streamlit-folium>=0.22.0

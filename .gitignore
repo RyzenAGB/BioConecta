@@ -1,0 +1,17 @@
+# Entorno virtual y caché de Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Datos crudos pesados (reproducibles ejecutando scripts/01_*.py)
+data/raw/
+
+# Caché de validación regional (reproducible ejecutando scripts/06_validation.py)
+data/processed/validation_regional/

@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "aoi_utm16n",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::32616" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Zona Piloto UNICARIBE - Rancho Viejo - Isla Mujeres" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 522840.0, 2342040.0 ], [ 522840.0, 2365350.0 ], [ 502050.0, 2365350.0 ], [ 502050.0, 2342040.0 ], [ 522840.0, 2342040.0 ] ] ] } }
+]
+}
