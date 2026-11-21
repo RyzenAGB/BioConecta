@@ -29,34 +29,34 @@ COLORS = {
 }
 
 LEVEL_COLORS = {
-    "Bajo": COLORS["risk_low"],
-    "Moderado": COLORS["warn"],
-    "Alto": COLORS["risk_high"],
+    "Bajo": "#22C55E",      # Verde semáforo claro
+    "Moderado": "#F59E0B",  # Ámbar / Naranja intenso
+    "Alto": "#EF4444",      # Rojo semáforo vivo
 }
 
-# Escala natural de idoneidad respetando los cortes científicos (<0.40, 0.40-0.70, >=0.70)
+# Escala intuitiva de idoneidad respetando los cortes científicos (<0.40, 0.40-0.70, >=0.70)
 HSM_CMAP = LinearSegmentedColormap.from_list(
-    "bioconecta_hsm_natural",
+    "bioconecta_hsm_intuitiva",
     [
-        (0.00, "#C9D3C4"),  # Baja: verde grisáceo claro
-        (0.38, "#AEBBA6"),
-        (0.42, "#9AA46A"),  # Media: verde oliva
-        (0.68, "#7D8E55"),
-        (0.72, "#567C65"),  # Alta (núcleo >= 0.70): verde bosque
-        (0.86, "#3F6751"),
-        (1.00, "#264736"),
+        (0.00, "#D73027"),  # Baja (<0.40): rojo
+        (0.38, "#F46D43"),  # Naranja
+        (0.42, "#FEE08B"),  # Media (0.40-0.70): amarillo
+        (0.68, "#D9EF8B"),  # Amarillo-verdoso
+        (0.72, "#66BD63"),  # Alta / Núcleo (>=0.70): verde esmeralda
+        (0.86, "#1A9850"),  # Verde intenso
+        (1.00, "#00441B"),  # Óptima (1.0): verde bosque profundo
     ],
 )
 
-# Franja de corredor (Linkage Mapper) con paleta sobria sin tonos neón
+# Franja de corredor (Linkage Mapper) con alto contraste sobre selva verde
 SWATH_CMAP = LinearSegmentedColormap.from_list(
-    "bioconecta_swath_natural",
+    "bioconecta_swath_contraste",
     [
         (0.00, "#00000000"),
-        (0.15, "#D3AC6955"),
-        (0.50, "#C9A24DAA"),
-        (0.85, "#C77F75CC"),
-        (1.00, "#A9635AE6"),
+        (0.15, "#FFE57F77"),
+        (0.50, "#FF9100CC"),
+        (0.85, "#FF1744E6"),
+        (1.00, "#D500F9FF"),
     ],
 )
 

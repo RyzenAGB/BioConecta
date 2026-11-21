@@ -416,7 +416,7 @@ def main():
         folium.raster_layers.ImageOverlay(
             image=hsm_uri,
             bounds=hsm_data["folium_bounds"],
-            opacity=0.72,
+            opacity=0.78,
             name="Idoneidad H(x)",
         ).add_to(m1)
 
@@ -439,10 +439,10 @@ def main():
                 {
                     "title": "Idoneidad H(x)",
                     "items": [
-                        {"kind": "box", "color": "#BAC6B4", "label": "Baja", "desc": "(< 0.40)"},
-                        {"kind": "box", "color": "#8E9B5A", "label": "Media", "desc": "(0.40–0.70)"},
-                        {"kind": "box", "color": "#567C65", "label": "Alta / Núcleo", "desc": "(≥ 0.70)"},
-                        {"kind": "box", "color": "#264736", "label": "Óptima", "desc": "(1.0)"},
+                        {"kind": "box", "color": "#D73027", "label": "Baja", "desc": "(< 0.40)"},
+                        {"kind": "box", "color": "#FEE08B", "label": "Media", "desc": "(0.40–0.70)"},
+                        {"kind": "box", "color": "#66BD63", "label": "Alta / Núcleo", "desc": "(≥ 0.70)"},
+                        {"kind": "box", "color": "#00441B", "label": "Óptima", "desc": "(1.0)"},
                     ],
                 },
                 {
@@ -532,10 +532,10 @@ def main():
             patches,
             name="Parches núcleo",
             style_function=lambda _: {
-                "fillColor": COLORS["forest"],
-                "color": COLORS["forest_deep"],
+                "fillColor": "#1A9850",
+                "color": "#00441B",
                 "weight": 1.8,
-                "fillOpacity": 0.58,
+                "fillOpacity": 0.62,
             },
             tooltip=folium.GeoJsonTooltip(
                 fields=["patch_id", "area_ha", "mean_hsm", "dominant_lc", "toca_borde"],
@@ -548,7 +548,7 @@ def main():
             cor_plot,
             name="Corredores",
             style_function=lambda feat: {
-                "color": COLORS["carto_mustard"] if feat["properties"].get("in_mst") else COLORS["carto_teal"],
+                "color": "#FF1744" if feat["properties"].get("in_mst") else "#00E5FF",
                 "weight": 3.4 if feat["properties"].get("in_mst") else 2.2,
                 "dashArray": None if feat["properties"].get("in_mst") else "6 4",
                 "opacity": 0.95,
@@ -578,10 +578,10 @@ def main():
                 {
                     "title": "Capas de conectividad",
                     "items": [
-                        {"kind": "box", "color": COLORS["forest"], "label": "Parches núcleo"},
-                        {"kind": "line", "color": COLORS["carto_mustard"], "label": "Corredor troncal (MST)"},
-                        {"kind": "dashed", "color": COLORS["carto_teal"], "label": "Enlace alterno (2-NN)"},
-                        {"kind": "box", "color": "#C9A24D", "label": "Franja de corredor"},
+                        {"kind": "box", "color": "#1A9850", "label": "Parches núcleo"},
+                        {"kind": "line", "color": "#FF1744", "label": "Corredor troncal (MST)"},
+                        {"kind": "dashed", "color": "#00E5FF", "label": "Enlace alterno (2-NN)"},
+                        {"kind": "box", "color": "#FF9100", "label": "Franja de corredor"},
                         {"kind": "line", "color": COLORS["carto_road"], "label": "Barreras / Avenidas"},
                     ],
                 }
@@ -672,9 +672,9 @@ def main():
                         {
                             "title": "Nivel de riesgo",
                             "items": [
-                                {"kind": "box", "color": COLORS["risk_high"], "label": "Alto"},
-                                {"kind": "box", "color": COLORS["warn"], "label": "Moderado"},
-                                {"kind": "box", "color": COLORS["risk_low"], "label": "Bajo"},
+                                {"kind": "box", "color": LEVEL_COLORS["Alto"], "label": "Alto"},
+                                {"kind": "box", "color": LEVEL_COLORS["Moderado"], "label": "Moderado"},
+                                {"kind": "box", "color": LEVEL_COLORS["Bajo"], "label": "Bajo"},
                                 {"kind": "line", "color": "#F0F1EA", "label": "Corredores troncales"},
                             ],
                         }
